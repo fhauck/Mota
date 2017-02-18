@@ -75,6 +75,14 @@ wp_enqueue_script('jquery', false, array(), false, false);
 }
 add_filter('wp_enqueue_scripts','insert_jquery',1);
 
+function add_javascript() {
+
+	$scripts = get_template_directory_uri().'/js/scripts-min';
+	wp_enqueue_script( 'motaScripts', $scripts, '', '', true);
+}
+add_action( 'wp_enqueue_scripts', 'add_javascript' );
+
+
 // Add editor styles
 add_action( 'init', 'mota_add_editor_styles' );
 
