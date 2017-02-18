@@ -86,22 +86,23 @@ input[type="search"]::-webkit-search-results-decoration {
 
 $colorBlack: #333333;
 $colorBlue: #0079a8;
+$colorLightGrey: #a3a3a3;
 
 
 html { 
 	-webkit-text-size-adjust: 100%; 
-	font-size: 16px;
+	font-size: 15px;
 	
 	@media only screen and (max-width: 960px) {
-		font-size: 15px;
-	}
-	
-	@media only screen and (max-width: 768px) {
 		font-size: 14px;
 	}
 	
-	@media only screen and (max-width: 500px) {
+	@media only screen and (max-width: 768px) {
 		font-size: 13px;
+	}
+	
+	@media only screen and (max-width: 500px) {
+		font-size: 12px;
 	}
 }
 
@@ -113,7 +114,7 @@ body {
 	font-family: 'Merriweather Sans', sans-serif;
 	//font-family: 'Merriweather', serif;
 	font-size: 1rem;
-	line-height: 1.5;
+	line-height: 1.75;
 	background-color: #FFFFFF;
 }
 
@@ -164,11 +165,15 @@ header {
 	background-color: #FFFFFF;
 	position: fixed;
 	z-index: 9999;
+	transition: padding 200ms ease-out;
 	
 	@media (min-width: 1280px) {
 		padding: 50px 0;
 	}	
 
+	&.fixed {
+		padding: 20px 0;
+	}
 }
 
 #mainwrapper {
@@ -390,7 +395,7 @@ h3.headline-teaser {
 		width: 60px;
 		font-size: 0;
 		line-height: 0;
-		margin: 1rem 0;
+		margin: 1.5rem 0;
 		background-color: $colorBlue;
 	}
 }
@@ -406,7 +411,7 @@ h3.headline-teaser {
 	.comments,
 	.author {
 		font-size: 0.875rem;
-		line-height: 1.5;
+		line-height: 1.75;
 	}
 	
 	.spacer {
@@ -511,6 +516,10 @@ h3.headline-teaser {
 			padding: 0 10px;
 			margin-top: 20px;
 		}
+		
+		.article-meta {
+			color: $colorLightGrey;
+		}
 	}
 	
 	.teaser-image {
@@ -527,11 +536,11 @@ h3.headline-teaser {
 .teaser-text {
 	font-family: 'Merriweather', serif;
 	font-size: 1rem;
-	line-height: 1.5;
+	line-height: 1.75;
 	
 	p {
 		font-size: 1rem;
-		line-height: 1.5;	
+		line-height: 1.75;	
 	}	
 }
 

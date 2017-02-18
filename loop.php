@@ -8,20 +8,10 @@
 	<div class="teaser-text">
 	<?php the_excerpt(); ?>
 	</div>
+	<div class="article-meta">
+		<span class="spacer date"><?php echo get_the_date(); ?></span>
+		<span class="spacer comments"><?php comments_number( '0 '. __( 'Comments', 'mota' ) .'', '1 '. __( 'Comment', 'mota' ) .'', '%  '. __( 'Comments', 'mota' ) .'' ); ?></span>
+		<span class="spacer author">by Flo</span>
+	</div>
 
 </article>
-
-
-<!--
-<article>
-<div class="teaser-image">
-	<img src="images/teaser02.jpg" alt="" />
-</div>
-
-<p>Cat ipsum dolor sit amet, ignore the squirrels, you’ll never catch them anyway or present belly, scratch hand when stroked and licks paws. Lick the curtain just to be annoying friends are not food but inspect anything brought into the house please …</p>
-</article>
-
-		<a href="<?php the_permalink(); ?>" class="post-info-left-top"><?php echo get_the_date(); ?></a>
-		<a href="<?php the_permalink(); ?>#comments" class="post-info-right-top"><?php comments_number( '0 '. __( 'Comments', 'branches' ) .'', '1 '. __( 'Comment', 'branches' ) .'', '%  '. __( 'Comments', 'branches' ) .'' ); ?></a>
-		<span class="post-info-left-bottom"><?php echo get_the_category_list(', '); ?></span>
--->

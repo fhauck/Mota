@@ -77,7 +77,7 @@ add_filter('wp_enqueue_scripts','insert_jquery',1);
 
 function add_javascript() {
 
-	$scripts = get_template_directory_uri().'/js/scripts-min';
+	$scripts = get_template_directory_uri().'/js/scripts-min.js';
 	wp_enqueue_script( 'motaScripts', $scripts, '', '', true);
 }
 add_action( 'wp_enqueue_scripts', 'add_javascript' );
