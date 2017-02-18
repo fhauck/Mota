@@ -8,7 +8,7 @@ Mota WordPress Theme, Copyright 2017 Flo Hauck, www.flohauck.de; Mota is distrib
 2. Activate the theme.
 
 ## Licenses
-Open Sans Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0; Noto Serif Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
+Merriweather Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0; Merriweather Sans Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
 
 ## Thanks
 www.unsplash.com (for being the best photo ressource), www.andersnoren.se (for developing great themes), learned a lot while studying his code, Russian Circles for the great Song "Mota" on the "Guidance" LP
