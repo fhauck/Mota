@@ -379,6 +379,17 @@ h1.headline-main a {
   }
 }
 
+h1.headline-main:after {
+  content: '';
+  display: block;
+  height: 5px;
+  width: 60px;
+  font-size: 0;
+  line-height: 0;
+  margin: 3% 0;
+  background-color: #FFFFFF;
+}
+
 h2.headline-sub {
   font-weight: 700;
   color: #FFFFFF;
@@ -398,17 +409,6 @@ h2.headline-sub {
     font-size: 14px;
     line-height: 20px;
   }
-}
-
-h2.headline-sub:before {
-  content: '';
-  display: block;
-  height: 5px;
-  width: 60px;
-  font-size: 0;
-  line-height: 0;
-  margin: 3% 0;
-  background-color: #FFFFFF;
 }
 
 h3.headline-teaser {

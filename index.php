@@ -18,7 +18,9 @@ if ( isset($sticky[0]) ) {
 			<div class="top-section-inner">
 				<div class="top-section-content">
 					<h1 class="headline-main"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-					<h2 class="headline-sub">Lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam consetetur sadipscing elitr</h2>
+					<?php if(get_field('subtitle')){ ?>
+					<h2 class="headline-sub"><?php the_field('subtitle'); ?></h2>
+					<?php } ?>
 					<div class="article-meta">
 						<span class="spacer date"><?php echo get_the_date(); ?></span>
 						<span class="spacer comments"><?php comments_number( '0 '. __( 'Comments', 'mota' ) .'', '1 '. __( 'Comment', 'mota' ) .'', '%  '. __( 'Comments', 'mota' ) .'' ); ?></span>

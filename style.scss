@@ -336,6 +336,17 @@ h1.headline-main {
 		font-size: 24px;
 		line-height: 34px;
 	}
+	
+	&:after {
+		content: '';
+		display: block;
+		height: 5px;
+		width: 60px;
+		font-size: 0;
+		line-height: 0;
+		margin: 3% 0;
+		background-color: #FFFFFF;
+	}
 }
 
 h2.headline-sub {
@@ -352,17 +363,6 @@ h2.headline-sub {
 	@media (max-width: 500px) {
 		font-size: 14px;
 		line-height: 20px;
-	}
-	
-	&:before {
-		content: '';
-		display: block;
-		height: 5px;
-		width: 60px;
-		font-size: 0;
-		line-height: 0;
-		margin: 3% 0;
-		background-color: #FFFFFF;
 	}
 }
 

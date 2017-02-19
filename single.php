@@ -43,14 +43,6 @@
 <?php endif; ?>
 </div>
 
-<?php if( get_theme_mod( 'branches_sidebar_singlepage' ) == '') { ?>
 
-<?php } else { ?>
-<div id="sidebar">
-	<?php get_sidebar(); ?>
-</div>
-<?php } ?>
-
-<div class="clear"></div>
 
 <?php get_footer(); ?>
