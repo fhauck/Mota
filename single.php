@@ -1,21 +1,22 @@
 <?php get_header(); ?>
 
-<?php if( get_theme_mod( 'branches_show_header_singlepost' ) == '') { } else { ?>
-	<article id="sticky-post">
-		<?php the_post_thumbnail('big-header-xxlarge'); ?>
-	</article>
-<?php } ?>
-
-<div id="post-area" class="single-post-wrapper <?php if( get_theme_mod( 'branches_sidebar_singlepage' ) == '') { ?>fullwidth<?php } ?>">
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 
-	<div id="single-post" <?php if( get_theme_mod( 'branches_show_header_singlepost' ) == '') { } else { ?>style="margin-top: 40px;"<?php } ?>>
+<article id="single-post">
+	
+	<div class="innerwidth">
+	
+		<h1 class="headline-main"><?php the_title(); ?></h1>
+
+		<?php if(get_field('subtitle')){ ?>
+		<h2 class="headline-sub"><?php the_field('subtitle'); ?></h2>
+		<?php } ?>
 		
-		<h1><?php the_title(); ?></h1>
-		
-		<div class="post-info">
-			<?php echo get_the_date(); ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php _e('by','branches'); ?> <span class="bypostauthor"><?php echo get_the_author(); ?></span>
+		<div class="article-meta">
+			<span class="spacer date"><?php echo get_the_date(); ?></span>
+			<span class="spacer comments"><?php comments_number( '0 '. __( 'Comments', 'mota' ) .'', '1 '. __( 'Comment', 'mota' ) .'', '%  '. __( 'Comments', 'mota' ) .'' ); ?></span>
+			<span class="spacer author">by Flo</span>
 		</div>
 		
 		<div class="entry">
@@ -37,11 +38,14 @@
 		?>
 		
 		<?php comments_template( '', true ); ?>
-		
+	
 	</div>
+	
+</article>
+	
+	
 <?php endwhile; ?>
 <?php endif; ?>
-</div>
 
 
 
