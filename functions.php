@@ -322,4 +322,20 @@ if(function_exists("register_field_group"))
 }
 
 
+
+
+function open_column_function() {
+  return '<div class="column-wrapper">';
+}
+
+add_shortcode('open-column', 'open_column_function');
+
+
+function close_column_function() {
+  return '</div>';
+}
+
+add_shortcode('close-column', 'close_column_function');
+
+
 ?>

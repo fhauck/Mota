@@ -583,8 +583,37 @@ h3.headline-teaser {
 	
 	p {
 		font-size: 1rem;
-		line-height: 1.75;	
+		line-height: 1.75;
+		margin: 1rem 0;	
 	}	
+}
+
+.column-wrapper {
+	column-count: 2;
+	column-gap: 50px;
+	
+	p:first-child {
+		margin-top: 0;
+	}
+}
+
+
+.alignnone {
+	width: 100% !important;
+	margin: 3rem 0;
+}
+
+.wp-caption,
+.wp-caption p {
+	display: block;
+	font-size: 0.8rem;
+	line-height: 1.75;
+	color: $colorLightGrey;
+}
+
+.size-large {
+	width: 100% !important;
+	height: auto !important;
 }
 
 /* -------------------------------------------------------------------------------- */
