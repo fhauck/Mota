@@ -282,9 +282,33 @@ header {
 		height: 100%;
 		left: 0;
 		top: 0;
-		background-color: $colorBlue;
+		background-color: $colorBlack;
 		opacity: 0.3;
 		z-index: 1;
+	}
+}
+
+.top-section-image {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	
+	img {
+		width: 100% !important;
+		height: auto !important;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%,-50%);
+		
+		@media only screen and (max-width: 710px) {
+			width: auto !important;
+			height: 100% !important;
+			max-width: none !important;	
+		}
 	}
 }
 
@@ -300,6 +324,7 @@ header {
 	top: 50%;
 	transform: translateY(-50%);
 	z-index: 3;
+	width: 100%;
 }
 
 h1.headline-main {
@@ -308,7 +333,7 @@ h1.headline-main {
 	color: $colorBlack;
 	font-size: linear(500, 1280, 24, 66);
 	line-height: linear(500, 1280, 34, 76);
-	width: 65%;
+	width: 60%;
 	
 	@media (min-width: 1280px) {
 		font-size: 66px;
@@ -361,7 +386,7 @@ h2.headline-sub {
 	color: $colorBlue;
 	font-size: linear(500, 1280, 14, 22);
 	line-height: linear(500, 1280, 20, 32);
-	width: 65%;	
+	width: 50%;	
 	
 	@at-root body.home h2.headline-sub {
 		color: #FFFFFF;
@@ -587,7 +612,7 @@ h3.headline-teaser {
 }
 
 #single-post {
-	padding-top: 7%;
+	padding-top: 6%;
 }
 
 .entry {
@@ -601,6 +626,158 @@ h3.headline-teaser {
 		line-height: 1.75;
 		margin: 1rem 0;	
 	}	
+	
+	blockquote {
+		margin: 2.5rem 0 2rem 0;
+		color: $colorLightGrey;
+		
+		&:before {
+			content: '';
+			display: block;
+			height: 5px;
+			width: 60px;
+			font-size: 0;
+			line-height: 0;
+			margin: 2rem 0;
+			background-color: $colorLightGrey;
+		}
+	}
+	
+	blockquote,
+	blockquote p {
+		font-size: 1.5rem;
+		line-height: 1.7;
+		font-style: italic;
+	}
+	
+	h1 {
+		font-size: 2.857rem;
+		margin: 2.857rem 0;
+		line-height: 3.285rem;
+		color: $colorBlack;
+		font-weight: 800;
+		display: block;
+		
+		@media only screen and (max-width: 720px) {
+			font-size: 2.657rem;
+			margin: 2.657rem 0;
+			line-height: 3.085rem;
+		}
+		
+		@media only screen and (max-width: 500px) {
+			font-size: 2.457rem;
+			margin: 2.457rem 0;
+			line-height: 2.885rem;
+		}
+	}
+	
+	h2 {
+		font-size: 2.457rem;
+		margin: 2.457rem 0;
+		line-height: 2.885rem;
+		color: $colorBlack;
+		font-weight: 800;
+		display: block;
+		
+		@media only screen and (max-width: 720px) {
+			font-size: 2.357rem;
+			margin: 2.357rem 0;
+			line-height: 2.785rem;
+		}
+		
+		@media only screen and (max-width: 500px) {
+			font-size: 2.257rem;
+			margin: 2.257rem 0;
+			line-height: 2.685rem;
+		}
+	}
+	
+	h3 {
+		font-size: 2.057rem;
+		margin: 2.057rem 0;
+		line-height: 2.485rem;
+		color: $colorBlack;
+		font-weight: 800;
+		display: block;
+		
+		@media only screen and (max-width: 720px) {
+			font-size: 1.957rem;
+			margin: 1.957rem 0;
+			line-height: 2.385rem;
+		}
+		
+		@media only screen and (max-width: 500px) {
+			font-size: 1.857rem;
+			margin: 1.857rem 0;
+			line-height: 2.285rem;
+		}
+	}
+	
+	h4 {
+		font-size: 1.657rem;
+		margin: 1.657rem 0;
+		line-height: 2.085rem;
+		color: $colorBlack;
+		font-weight: 800;
+		display: block;
+		
+		@media only screen and (max-width: 720px) {
+			font-size: 1.557rem;
+			margin: 1.557rem 0;
+			line-height: 1.985rem;
+		}
+		
+		@media only screen and (max-width: 500px) {
+			font-size: 1.457rem;
+			margin: 1.457rem 0;
+			line-height: 1.885rem;
+		}
+	}
+	
+	h5 {
+		font-size: 1.257rem;
+		margin: 1.257rem 0;
+		line-height: 1.685rem;
+		color: $colorBlack;
+		font-weight: 800;
+		display: block;
+		
+		@media only screen and (max-width: 720px) {
+			font-size: 1.157rem;
+			margin: 1.157rem 0;
+			line-height: 1.585rem;
+		}
+		
+		@media only screen and (max-width: 500px) {
+			font-size: 1.057rem;
+			margin: 1.057rem 0;
+			line-height: 1.485rem;
+		}
+	}
+
+	
+	h6 {
+		font-size: 1rem;
+		margin: 1rem 0;
+		line-height: 1.4rem;
+		color: $colorBlack;
+		font-weight: 800;
+		display: block;
+		
+		
+		@media only screen and (max-width: 720px) {
+			font-size: 0.957rem;
+			margin: 0.957rem 0;
+			line-height: 1.3rem;
+		}
+		
+		@media only screen and (max-width: 500px) {
+			font-size: 0.857rem;
+			margin: 0.857rem 0;
+			line-height: 1.2rem;
+		}
+	}
+
 }
 
 .column-wrapper {
@@ -630,6 +807,20 @@ h3.headline-teaser {
 	width: 100% !important;
 	height: auto !important;
 }
+
+.article-image {
+	
+	font-size: 0;
+	line-height: 0;
+	margin: 2rem 0;
+	width: 100%;
+	
+	img {
+		width: 100% !important;
+		height: auto;
+	}
+}
+
 
 /* -------------------------------------------------------------------------------- */
 /*	4. Sidebar

@@ -33,11 +33,11 @@ function mota_setup() {
 	add_image_size( 'mota_big-header-medium', 766, 323, true );
 	add_image_size( 'mota_big-header-small', 580, 245, true );
 
+
 	add_image_size( 'mota_post-thumbnail-medium', 720, 460, true );
 	add_image_size( 'mota_post-thumbnail-small', 360, 230, true );	
 	
-	
-	add_editor_style( array( 'mota-editor-styles.css', mota_fonts_url() ) );
+
 	
 
 	// Make the theme translation ready
@@ -163,7 +163,7 @@ class mota_Customize {
 		// Add Setting for Accent Color
 		$wp_customize->add_setting( 'overlay_color', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
 		 array(
-		    'default' => '#0079a8', //Default setting/value to save
+		    'default' => '#333333', //Default setting/value to save
 		    'type' => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
 		    'transport' => 'refresh', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
 		    'sanitize_callback' => 'sanitize_hex_color'            
@@ -263,6 +263,24 @@ class mota_Customize {
 				)
 		    )
 		); 
+		
+		
+		$wp_customize->add_setting(
+		    'mota_show_header_singlepost',
+		    array(
+		        'default' => false,
+		        'sanitize_callback' => 'mota_sanitize_int'
+		    )
+		);
+		
+		$wp_customize->add_control(
+		    'mota_show_header_singlepost',
+		    array(
+		        'label' => __( 'Show Featured Image on single post template', 'mota' ),
+		        'section' => 'mota_posts_pages',
+		        'type' => 'checkbox',
+		    )
+		);  
 	
 	}
 

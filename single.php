@@ -19,6 +19,12 @@
 			<span class="spacer author"><?php _e('by','mota'); ?> <?php echo esc_attr( get_the_author() ); ?></span>
 		</div>
 		
+		<?php if( esc_attr( get_theme_mod( 'mota_show_header_singlepost' ) ) == '') { } else { ?>
+		<div class="article-image">
+			<?php the_post_thumbnail('mota_big-header-xlarge'); ?>
+		</div>
+		<?php } ?>
+		
 		<div class="<?php if( esc_attr( get_theme_mod( 'mota_two_column_content' ) ) == '') { ?><?php } else { ?>column-wrapper <?php } ?>entry">
 
 			<?php the_content(); ?>

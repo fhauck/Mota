@@ -34,12 +34,14 @@ GNU General Public License for more details.
 == Licenses ==
 
 Fonts:
-//Open Sans Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
-//Noto Serif Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
+Merriweather Sans Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
+Merriweather Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
+Open Sans Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
+Roboto Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
 
 Images used on Theme-Screenshot: 
-Stacy Wyss (https://unsplash.com/@stacywyss?photo=-aDl1z8_nGY) : Creative Commons Zero, https://creativecommons.org/publicdomain/zero/1.0/
-David Marcu (https://unsplash.com/@davidmarcu?photo=VfUN94cUy4o) : Creative Commons Zero, https://creativecommons.org/publicdomain/zero/1.0/
+// Stacy Wyss (https://unsplash.com/@stacywyss?photo=-aDl1z8_nGY) : Creative Commons Zero, https://creativecommons.org/publicdomain/zero/1.0/
+// David Marcu (https://unsplash.com/@davidmarcu?photo=VfUN94cUy4o) : Creative Commons Zero, https://creativecommons.org/publicdomain/zero/1.0/
 
 Plugins:
 Advanced Custom Fields : GPLv2 or later, http://www.gnu.org/licenses/gpl-2.0.html
