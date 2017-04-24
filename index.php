@@ -13,7 +13,7 @@ if ( isset($sticky[0]) ) {
 ?>
 	
 	
-	<section class="sticky" id="top-section" style="background-image: url(<?php the_post_thumbnail_url('big-header-xxlarge'); ?>);">
+	<section class="sticky" id="top-section" style="background-image: url(<?php the_post_thumbnail_url('mota_big-header-xxlarge'); ?>);">
 		<div class="innerwidth">
 			<div class="top-section-inner">
 				<div class="top-section-content">
@@ -23,8 +23,8 @@ if ( isset($sticky[0]) ) {
 					<?php } ?>
 					<div class="article-meta">
 						<span class="spacer date"><?php echo get_the_date(); ?></span>
-						<span class="spacer comments"><?php comments_number( '0 '. __( 'Comments', 'mota' ) .'', '1 '. __( 'Comment', 'mota' ) .'', '%  '. __( 'Comments', 'mota' ) .'' ); ?></span>
-						<span class="spacer author">by Flo</span>
+						<span class="spacer comments"><a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0 '. __( 'Comments', 'mota' ) .'', '1 '. __( 'Comment', 'mota' ) .'', '%  '. __( 'Comments', 'mota' ) .'' ); ?></a></span>
+						<span class="spacer author"><?php _e('by','mota'); ?> <?php echo esc_attr( get_the_author() ); ?></span>
 					</div>
 				</div>
 			</div>

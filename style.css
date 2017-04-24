@@ -2,9 +2,9 @@
 
 	Theme Name: Mota
     Text Domain: mota
-	Theme URI: http://www.flohauck.de/themes/mota/
-	Version: 1.01
-	Description: 
+	Theme URI: http://www.flohauck.de/wordpress-themes/mota/
+	Version: 1.0
+	Description: Mota is a minimalistic Theme that works perfectly as a Blog or Magazine-Layout. You can change some Colors, choose between three different Font-Combinations, upload your own Logo and a lot more.
 	Tags: blog, featured-images, sticky-post, theme-options, threaded-comments, translation-ready, custom-menu, right-sidebar, threaded-comments, one-column, two-columns
 	Author: Flo Hauck
 	Author URI: http://www.flohauck.de
@@ -81,19 +81,16 @@ html {
   -webkit-text-size-adjust: 100%;
   font-size: 15px;
 }
-
 @media only screen and (max-width: 960px) {
   html {
     font-size: 14px;
   }
 }
-
 @media only screen and (max-width: 768px) {
   html {
     font-size: 13px;
   }
 }
-
 @media only screen and (max-width: 500px) {
   html {
     font-size: 12px;
@@ -183,13 +180,11 @@ header {
   transition: padding 200ms ease-out;
   border-bottom: 1px solid #e3e3e3;
 }
-
 @media (min-width: 1280px) {
   header {
     padding: 50px 0;
   }
 }
-
 header.fixed {
   padding: 20px 0;
 }
@@ -197,26 +192,22 @@ header.fixed {
 #mainwrapper {
   padding-top: calc(3.9vw * 2);
 }
-
 @media (min-width: 1280px) {
   #mainwrapper {
     padding-top: calc(50px * 2);
   }
 }
-
 #mainwrapper:before {
   content: '';
   display: block;
   width: 100%;
   height: calc(2.0512820513vw + 1 * 9.7435897436px);
 }
-
 @media (min-width: 1280px) {
   #mainwrapper:before {
     height: 36px;
   }
 }
-
 @media (max-width: 500px) {
   #mainwrapper:before {
     height: 20px;
@@ -233,21 +224,18 @@ header.fixed {
   font-size: calc(2.0512820513vw + 1 * 9.7435897436px);
   line-height: calc(2.0512820513vw + 1 * 9.7435897436px);
 }
-
 @media (min-width: 1280px) {
   #logo {
     font-size: 36px;
     line-height: 36px;
   }
 }
-
 @media (max-width: 500px) {
   #logo {
     font-size: 20px;
     line-height: 20px;
   }
 }
-
 #logo a {
   color: inherit;
   text-decoration: none;
@@ -260,19 +248,16 @@ header.fixed {
   margin: 0 auto;
   overflow: hidden;
 }
-
 @media only screen and (max-width: 720px) {
   .innerwidth {
     padding: 0 30px;
   }
 }
-
 @media only screen and (max-width: 610px) {
   .innerwidth {
     padding: 0 25px;
   }
 }
-
 @media only screen and (max-width: 500px) {
   .innerwidth {
     padding: 0 20px;
@@ -292,17 +277,14 @@ header.fixed {
   background-position: center center;
   position: relative;
 }
-
 #top-section h1.headline-main,
 #top-section h2.headline-sub {
   position: relative;
   z-index: 2;
 }
-
 #top-section .innerwidth {
   height: 100%;
 }
-
 #top-section::after {
   content: '';
   display: block;
@@ -339,26 +321,22 @@ h1.headline-main {
   line-height: calc(5.3846153846vw + 1 * 7.0769230769px);
   width: 65%;
 }
-
 @media (min-width: 1280px) {
   h1.headline-main {
     font-size: 66px;
     line-height: 76px;
   }
 }
-
 @media only screen and (max-width: 720px) {
   h1.headline-main {
     width: 75%;
   }
 }
-
 @media only screen and (max-width: 610px) {
   h1.headline-main {
     width: 85%;
   }
 }
-
 @media only screen and (max-width: 500px) {
   h1.headline-main {
     width: 100%;
@@ -366,12 +344,10 @@ h1.headline-main {
     line-height: 34px;
   }
 }
-
 h1.headline-main a {
   color: inherit;
   text-decoration: none;
 }
-
 h1.headline-main:after {
   content: '';
   display: block;
@@ -382,11 +358,9 @@ h1.headline-main:after {
   margin: 3% 0;
   background-color: #0079a8;
 }
-
 body.home h1.headline-main {
   color: #FFFFFF;
 }
-
 body.home h1.headline-main:after {
   background-color: #FFFFFF;
 }
@@ -398,30 +372,25 @@ h2.headline-sub {
   line-height: calc(1.5384615385vw + 1 * 12.3076923077px);
   width: 65%;
 }
-
 body.home h2.headline-sub {
   color: #FFFFFF;
 }
-
 @media (min-width: 1280px) {
   h2.headline-sub {
     font-size: 22px;
     line-height: 32px;
   }
 }
-
 @media only screen and (max-width: 720px) {
   h2.headline-sub {
     width: 75%;
   }
 }
-
 @media only screen and (max-width: 610px) {
   h2.headline-sub {
     width: 85%;
   }
 }
-
 @media (max-width: 500px) {
   h2.headline-sub {
     font-size: 14px;
@@ -437,26 +406,25 @@ h3.headline-teaser {
   line-height: calc(1.7948717949vw + 1 * 15.0256410256px);
   margin-top: 1rem;
 }
-
 h3.headline-teaser a {
   color: inherit;
   text-decoration: none;
 }
-
+h3.headline-teaser a:hover {
+  text-decoration: underline;
+}
 @media (min-width: 1280px) {
   h3.headline-teaser {
     font-size: 30px;
     line-height: 38px;
   }
 }
-
 @media (max-width: 500px) {
   h3.headline-teaser {
     font-size: 18px;
     line-height: 24px;
   }
 }
-
 h3.headline-teaser:after {
   content: '';
   display: block;
@@ -475,147 +443,132 @@ h3.headline-teaser:after {
   margin-top: 1rem;
   font-weight: 400;
 }
-
 .article-meta .date,
 .article-meta .comments,
 .article-meta .author {
   font-size: 0.875rem;
   line-height: 1.75;
 }
-
 .article-meta .spacer:not(:last-child):after {
   content: '|';
   padding-left: 10px;
   padding-right: 10px;
 }
-
 body:not(.home) .article-meta {
   color: #a3a3a3;
+}
+.article-meta a {
+  color: inherit;
 }
 
 .article-list {
   padding-bottom: 50px;
 }
-
 .article-list .innerwidth {
   font-size: 0;
   line-height: 0;
 }
-
 .article-list .two-column {
   width: calc(100% + 50px);
   margin-left: -25px;
 }
-
 @media only screen and (max-width: 960px) {
   .article-list .two-column {
     margin-left: -20px;
     width: calc(100% + 40px);
   }
 }
-
 @media only screen and (max-width: 768px) {
   .article-list .two-column {
     margin-left: -15px;
     width: calc(100% + 30px);
   }
 }
-
 @media only screen and (max-width: 600px) {
   .article-list .two-column {
     margin-left: -10px;
     width: calc(100% + 20px);
   }
 }
-
 .article-list .two-column article {
   width: 50%;
 }
-
 @media only screen and (max-width: 600px) {
   .article-list .two-column article {
     width: 100%;
   }
 }
-
 .article-list .three-column {
   width: calc(100% + 50px);
   margin-left: -25px;
 }
-
 @media only screen and (max-width: 960px) {
   .article-list .three-column {
     margin-left: -20px;
     width: calc(100% + 40px);
   }
 }
-
 @media only screen and (max-width: 768px) {
   .article-list .three-column {
     margin-left: -15px;
     width: calc(100% + 30px);
   }
 }
-
 @media only screen and (max-width: 600px) {
   .article-list .three-column {
     margin-left: -10px;
     width: calc(100% + 20px);
   }
 }
-
 .article-list .three-column article {
   width: 33.3333%;
 }
-
 @media only screen and (max-width: 960px) {
   .article-list .three-column article {
     width: 50%;
   }
 }
-
 @media only screen and (max-width: 600px) {
   .article-list .three-column article {
     width: 100%;
   }
 }
-
 .article-list article {
   display: inline-block;
   padding: 0 25px;
   margin-top: 50px;
   vertical-align: top;
 }
-
 @media only screen and (max-width: 960px) {
   .article-list article {
     padding: 0 20px;
     margin-top: 40px;
   }
 }
-
 @media only screen and (max-width: 768px) {
   .article-list article {
     padding: 0 15px;
     margin-top: 30px;
   }
 }
-
 @media only screen and (max-width: 600px) {
   .article-list article {
     padding: 0 10px;
     margin-top: 20px;
   }
 }
-
 .article-list article .article-meta {
   color: #a3a3a3;
 }
-
+.article-list article .article-meta a {
+  color: inherit;
+}
+.article-list article .article-meta a:hover {
+  color: #0079a8;
+}
 .article-list .teaser-image {
   width: 100%;
 }
-
 .article-list .teaser-image img {
   width: 100%;
   height: auto;
@@ -626,7 +579,6 @@ body:not(.home) .article-meta {
   font-size: 1rem;
   line-height: 1.75;
 }
-
 .teaser-text p {
   font-size: 1rem;
   line-height: 1.75;
@@ -642,7 +594,6 @@ body:not(.home) .article-meta {
   font-size: 1rem;
   line-height: 1.75;
 }
-
 .entry p {
   font-size: 1rem;
   line-height: 1.75;
@@ -657,7 +608,6 @@ body:not(.home) .article-meta {
      -moz-column-gap: 50px;
           column-gap: 50px;
 }
-
 .column-wrapper p:first-child {
   margin-top: 0;
 }

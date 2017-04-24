@@ -1,28 +1,18 @@
 <?php
 	
-/*  Thumbnail upscale
-/* ------------------------------------ */ 
-function alx_thumbnail_upscale( $default, $orig_w, $orig_h, $new_w, $new_h, $crop ){
-    if ( !$crop ) return null; // let the wordpress default function handle this
- 
-    $aspect_ratio = $orig_w / $orig_h;
-    $size_ratio = max($new_w / $orig_w, $new_h / $orig_h);
- 
-    $crop_w = round($new_w / $size_ratio);
-    $crop_h = round($new_h / $size_ratio);
- 
-    $s_x = floor( ($orig_w - $crop_w) / 2 );
-    $s_y = floor( ($orig_h - $crop_h) / 2 );
- 
-    return array( 0, 0, (int) $s_x, (int) $s_y, (int) $new_w, (int) $new_h, (int) $crop_w, (int) $crop_h );
-}
-add_filter( 'image_resize_dimensions', 'alx_thumbnail_upscale', 10, 6 );
-
-
 // Theme setup
-add_action( 'after_setup_theme', 'mota_setup' );
-
 function mota_setup() {
+	
+	// Add default posts and comments RSS feed links to head.
+	add_theme_support( 'automatic-feed-links' );
+	
+	/*
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 */
+	add_theme_support( 'title-tag' );
 	
 	// Automatic feed
 	add_theme_support( 'automatic-feed-links' );
@@ -30,79 +20,328 @@ function mota_setup() {
 	// Add nav menu
 	register_nav_menu( 'primary', __('Primary Menu','mota') );
 	
+	// This theme uses wp_nav_menu() in one location.
+	register_nav_menus( array(
+		'menu-1' => esc_html__( 'Primary', 'mota' ),
+	) );
+	
 	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size ( 360, 230, true );
 	
+	add_image_size( 'mota_big-header-xxlarge', 2320, 980, true );
+	add_image_size( 'mota_big-header-xlarge', 1740, 735, true );
+	add_image_size( 'mota_big-header-large', 1160, 490, true );
+	add_image_size( 'mota_big-header-medium', 766, 323, true );
+	add_image_size( 'mota_big-header-small', 580, 245, true );
 
-	add_image_size( 'big-header-xxlarge', 2320, 980, true );
-	add_image_size( 'big-header-xlarge', 1740, 735, true );
-	add_image_size( 'big-header-large', 1160, 490, true );
-	add_image_size( 'big-header-medium', 766, 323, true );
-	add_image_size( 'big-header-small', 580, 245, true );
+	add_image_size( 'mota_post-thumbnail-medium', 720, 460, true );
+	add_image_size( 'mota_post-thumbnail-small', 360, 230, true );	
 	
 	
-	add_image_size( 'post-thumbnail-medium', 720, 460, true );
-	add_image_size( 'post-thumbnail-small', 360, 230, true );	
+	add_editor_style( array( 'mota-editor-styles.css', mota_fonts_url() ) );
 	
 
 	// Make the theme translation ready
 	load_theme_textdomain('mota', get_template_directory() . '/languages');
 	
-	$locale = get_locale();
-	$locale_file = get_template_directory() . "/languages/$locale.php";
-	if ( is_readable($locale_file) )
-	  require_once($locale_file);
 	  
 	// Set content-width
 	global $content_width;
 	if ( ! isset( $content_width ) ) $content_width = 882;
 }
+add_action( 'after_setup_theme', 'mota_setup' );
+
+// Add Custom Logo support
+function mota_custom_logo_setup() {
+    $defaults = array(
+		'width'			=> 600,
+		'height'		=> 400,
+		'flex-height'	=> true,
+		'flex-width'	=> true
+    );
+    add_theme_support( 'custom-logo', $defaults );
+}
+add_action( 'after_setup_theme', 'mota_custom_logo_setup' );
 
 
+if ( ! function_exists( 'mota_fonts_url' ) ) :
+function mota_fonts_url() {
+	$fonts_url = '';
+	$fonts     = array();
+	$subsets   = 'latin,latin-ext';
 
+	/* translators: If there are characters in your language that are not supported by Merriweather Sans, translate this to 'off'. Do not translate into your own language. */
+	if ( 'off' !== _x( 'on', 'Merriweather Sans font: on or off', 'mota' ) ) {
+		$fonts[] = 'Merriweather Sans:400,700,800';
+	}
+
+	/* translators: If there are characters in your language that are not supported by Merriweather, translate this to 'off'. Do not translate into your own language. */
+	if ( 'off' !== _x( 'on', 'Merriweather font: on or off', 'mota' ) ) {
+		$fonts[] = 'Merriweather:400,700,800';
+	}
+	
+	/* translators: If there are characters in your language that are not supported by Open Sans, translate this to 'off'. Do not translate into your own language. */
+	if ( 'off' !== _x( 'on', 'Open Sans font: on or off', 'mota' ) ) {
+		$fonts[] = 'Open Sans:400,700,800';
+	}
+
+	/* translators: If there are characters in your language that are not supported by Roboto, translate this to 'off'. Do not translate into your own language. */
+	if ( 'off' !== _x( 'on', 'Roboto font: on or off', 'mota' ) ) {
+		$fonts[] = 'Roboto:400,700,800';
+	}
+
+	if ( $fonts ) {
+		$fonts_url = add_query_arg( array(
+			'family' => urlencode( implode( '|', $fonts ) ),
+			'subset' => urlencode( $subsets ),
+		), 'https://fonts.googleapis.com/css' );
+	}
+
+	return $fonts_url;
+}
+endif;
 
 // Register and enqueue styles
 function mota_load_style() {
 	if ( !is_admin() ) {
-	    wp_enqueue_style( 'mota_googleFonts', '//fonts.googleapis.com/css?family=Merriweather+Sans:400,700,800|Merriweather:400,700' );
+		// Add custom fonts, used in the main stylesheet.
+		wp_enqueue_style( 'mota-fonts', mota_fonts_url(), array(), null );
 	    wp_enqueue_style( 'mota_style', get_stylesheet_uri() );
 	}
 }
+add_action('wp_enqueue_scripts', 'mota_load_style');
 
-add_action('wp_print_styles', 'mota_load_style');
+// Enqueue scripts and styles.
+function mota_scripts() {
 
-function insert_jquery(){
-wp_enqueue_script('jquery', false, array(), false, false);
+	wp_enqueue_script( 'mota-scripts', get_template_directory_uri() . '/js/mota-scripts.js', array( 'jquery' ), '', true);
+
+
+	if ( comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
 }
-add_filter('wp_enqueue_scripts','insert_jquery',1);
+add_action( 'wp_enqueue_scripts', 'mota_scripts' );
 
-function add_javascript() {
 
-	$scripts = get_template_directory_uri().'/js/scripts-min.js';
-	wp_enqueue_script( 'motaScripts', $scripts, '', '', true);
+function mota_sanitize_int( $input, $setting ) {
+$input = absint( $input );
+// If the input is an absolute integer, return it.
+// otherwise, return the default.
+return ( $input ? $input : $setting->default );
 }
-add_action( 'wp_enqueue_scripts', 'add_javascript' );
 
+// mota theme options
+class mota_Customize {
 
-// Add editor styles
-add_action( 'init', 'mota_add_editor_styles' );
+	public static function mota_register ( $wp_customize ) {
+   
+      
+	
+		
+		// Add Setting for Accent Color
+		$wp_customize->add_setting( 'accent_color', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+		 array(
+		    'default' => '#0079a8', //Default setting/value to save
+		    'type' => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+		    'transport' => 'refresh', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+		    'sanitize_callback' => 'sanitize_hex_color'            
+		 ) 
+		);
+		
+		// Add Control for Accent Color
+		$wp_customize->add_control( new WP_Customize_Color_Control( //Instantiate the color control class
+		 $wp_customize, //Pass the $wp_customize object (required)
+		 'mota_accent_color', //Set a unique ID for the control
+		 array(
+		    'label' => __( 'Accent Color', 'mota' ), //Admin-visible name of the control
+		    'section' => 'colors', //ID of the section this control should render in (can be one of yours, or a WordPress default section)
+		    'settings' => 'accent_color', //Which setting to load and manipulate (serialized is okay)
+		    'priority' => 10, //Determines the order this control appears in for the specified section
+		 ) 
+		) );
+	      
+		// Add Setting for Accent Color
+		$wp_customize->add_setting( 'overlay_color', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+		 array(
+		    'default' => '#0079a8', //Default setting/value to save
+		    'type' => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+		    'transport' => 'refresh', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+		    'sanitize_callback' => 'sanitize_hex_color'            
+		 ) 
+		);
+		
+		// Add Control for Accent Color
+		$wp_customize->add_control( new WP_Customize_Color_Control( //Instantiate the color control class
+		 $wp_customize, //Pass the $wp_customize object (required)
+		 'mota_overlay_color', //Set a unique ID for the control
+		 array(
+		    'label' => __( 'Overlay Color', 'mota' ), //Admin-visible name of the control
+		    'section' => 'colors', //ID of the section this control should render in (can be one of yours, or a WordPress default section)
+		    'settings' => 'overlay_color', //Which setting to load and manipulate (serialized is okay)
+		    'priority' => 20, //Determines the order this control appears in for the specified section
+		 ) 
+		) );	   
+	     
+		$wp_customize->add_section('mota_fonts',
+		    array(
+		        'title' => 'Fonts',
+		        'description' => __( 'Choose between different Fonts.', 'mota' ),
+		        'priority' => 70
+		    )
+		);
+		
+		$wp_customize->add_section('mota_posts_pages',
+		    array(
+		        'title' => 'Posts/Pages',
+		        'description' => __( 'Some options for the single post and the page template.', 'mota' ),
+		        'priority' => 75
+		    )
+		);
+	
+		// Add Two Columns Checkbox
+		
+		$wp_customize->add_setting(
+		    'mota_two_column_content',
+		    array(
+		        'default' => false,
+		        'sanitize_callback' => 'mota_sanitize_int'
+		    )
+		);
+		
+		$wp_customize->add_control(
+		    'mota_two_column_content',
+		    array(
+		        'label' => __( 'Show Content in Two Columns', 'mota' ),
+		        'section' => 'mota_posts_pages',
+		        'type' => 'checkbox'
+		    )
+		);  
+		
+		// Add Font Switcher
+		
+		$wp_customize->add_setting(
+		    'mota_main_font',
+		    array(
+		        'default' => 'Merriweather Sans'
+		    )
+		);
+		
+		$wp_customize->add_control(
+		    'mota_main_font',
+		    array(
+		        'label' => __( 'Main Font (Headlines)', 'mota' ),
+		        'section' => 'mota_fonts',
+		        'type' => 'select',
+				'choices'  => array(
+					'Merriweather Sans, sans-serif'  => 'Merriweather Sans',
+					'Merriweather, serif'  => 'Merriweather',
+					'Open Sans, sans-serif'  => 'Open Sans',
+					'Roboto, sans-serif'  => 'Roboto'
+				)
+		    )
+		);  
+		
+		
+		$wp_customize->add_setting(
+		    'mota_second_font',
+		    array(
+		        'default' => 'Merriweather'
+		    )
+		);
+		
+		$wp_customize->add_control(
+		    'mota_second_font',
+		    array(
+		        'label' => __( 'Second Font (Text, Teasertext)', 'mota' ),
+		        'section' => 'mota_fonts',
+		        'type' => 'select',
+				'choices'  => array(
+					'Merriweather Sans, sans-serif'  => 'Merriweather Sans',
+					'Merriweather, serif'  => 'Merriweather',
+					'Open Sans, sans-serif'  => 'Open Sans',
+					'Roboto, sans-serif'  => 'Roboto'
+				)
+		    )
+		); 
+	
+	}
 
-function mota_add_editor_styles() {
-    add_editor_style( 'mota-editor-styles.css' );
-    $font_url = '//fonts.googleapis.com/css?family=Merriweather+Sans:400,700,800|Merriweather:400,700';
-    add_editor_style( str_replace( ',', '%2C', $font_url ) );
+   public static function mota_header_output() {
+      ?>
+      
+	      <!-- Customizer CSS --> 
+	      
+	      <style type="text/css">
+	            <?php
+		            
+			       
+			       esc_html( self::mota_generate_css('body', 'font-family', 'mota_main_font') ); 
+			       esc_html( self::mota_generate_css('.teaser-text, .entry', 'font-family', 'mota_second_font') ); 
+		            
+		           esc_html( self::mota_generate_css('#top-section::after,h1.headline-main::after,h3.headline-teaser::after', 'background-color', 'accent_color') ); 
+		           esc_html( self::mota_generate_css('h2.headline-sub,.article-list article .article-meta a:hover', 'color', 'accent_color') );
+		           
+		           esc_html( self::mota_generate_css('#top-section::after', 'background-color', 'overlay_color') ); 
+		        ?>
+
+	      </style> 
+	      
+	      <!--/Customizer CSS-->
+	      
+      <?php
+   }
+   
+   
+   public static function mota_generate_css( $selector, $style, $mod_name, $prefix='', $postfix='', $echo=true ) {
+      $return = '';
+      $mod = esc_attr( get_theme_mod($mod_name) );
+      if ( ! empty( $mod ) ) {
+         $return = sprintf('%s { %s:%s; }',
+            $selector,
+            $style,
+            $prefix.$mod.$postfix
+         );
+         if ( $echo ) {
+            echo $return;
+         }
+      }
+      return $return;
+    }
 }
+
+// Setup the Theme Customizer settings and controls...
+add_action( 'customize_register' , array( 'mota_Customize' , 'mota_register' ) );
+
+// Output custom CSS to live site
+add_action( 'wp_head' , array( 'mota_Customize' , 'mota_header_output' ) );
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Change the length of excerpts
 function mota_custom_excerpt_length( $length ) {
+	if ( is_admin() ) {
+		return $length;
+	}
 	return 42;
 }
 add_filter( 'excerpt_length', 'mota_custom_excerpt_length', 999 );
 
 
 // Change the excerpt ellipsis
-function mota_new_excerpt_more( $more ) {
+function mota_new_excerpt_more( $link ) {
+	if ( is_admin() ) {
+		return $link;
+	}
 	return ' ...';
 }
 add_filter( 'excerpt_more', 'mota_new_excerpt_more' );
@@ -182,101 +421,6 @@ function wpdocs_hack_wp_title_for_home( $title )
   return $title;
 }
 
-// mota comment function
-if ( ! function_exists( 'mota_comment' ) ) :
-
-function mota_comment( $comment, $args, $depth ) {
-	$GLOBALS['comment'] = $comment;
-	switch ( $comment->comment_type ) :
-		case 'pingback' :
-		case 'trackback' :
-	?>
-	
-	<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
-	
-		<?php __( 'Pingback:', 'mota' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'mota' ), '<span class="edit-link">', '</span>' ); ?>
-		
-	</li>
-	<?php
-			break;
-		default :
-		global $post;
-	?>
-	<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
-	
-		<div id="comment-<?php comment_ID(); ?>" class="comment">
-			
-			<?php echo get_avatar( $comment, 160 ); ?>
-			
-			<?php if ( $comment->user_id === $post->post_author ) : ?>
-					
-				<a class="comment-author-icon" href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>" title="<?php _e('Post author','mota'); ?>">
-				
-					<div class="genericon genericon-user"></div>
-					
-				</a>
-			
-			<?php endif; ?>
-			
-			<div class="comment-inner">
-			
-				<div class="comment-header">
-											
-					<h4><?php echo get_comment_author_link(); ?></h4>
-				
-				</div> <!-- /comment-header -->
-				
-				<div class="comment-content post-content">
-			
-					<?php comment_text(); ?>
-					
-				</div><!-- /comment-content -->
-				
-				<div class="comment-meta">
-					
-					<div class="fleft">
-						<div class="genericon genericon-day"></div><a class="comment-date-link" href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>" title="<?php echo get_comment_date() . ' at ' . get_comment_time(); ?>"><?php echo get_comment_date(get_option('date_format')); ?></a>
-						<?php edit_comment_link( __( 'Edit', 'mota' ), '<div class="genericon genericon-edit"></div>', '' ); ?>
-					</div>
-					
-					<?php if ( '0' == $comment->comment_approved ) : ?>
-				
-						<div class="comment-awaiting-moderation fright">
-							<div class="genericon genericon-show"></div><?php _e( 'Your comment is awaiting moderation.', 'mota' ); ?>
-						</div>
-						
-					<?php else : ?>
-						
-						<?php 
-							comment_reply_link( array( 
-								'reply_text' 	=>  	__('Reply','mota'),
-								'depth'			=> 		$depth, 
-								'max_depth' 	=> 		$args['max_depth'],
-								'before'		=>		'<div class="fright"><div class="genericon genericon-reply"></div>',
-								'after'			=>		'</div>'
-								) 
-							); 
-						?>
-					
-					<?php endif; ?>
-					
-					<div class="clear"></div>
-					
-				</div> <!-- /comment-meta -->
-								
-			</div> <!-- /comment-inner -->
-										
-		</div><!-- /comment-## -->
-				
-	<?php
-		break;
-	endswitch;
-}
-endif;
-
-
-
-
 
 //define( 'ACF_LITE', true );
 include_once('advanced-custom-fields/acf.php');
@@ -322,20 +466,6 @@ if(function_exists("register_field_group"))
 }
 
 
-
-
-function open_column_function() {
-  return '<div class="column-wrapper">';
-}
-
-add_shortcode('open-column', 'open_column_function');
-
-
-function close_column_function() {
-  return '</div>';
-}
-
-add_shortcode('close-column', 'close_column_function');
 
 
 ?>

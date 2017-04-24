@@ -16,11 +16,11 @@
 		<div class="article-meta">
 			<span class="spacer date"><?php echo get_the_date(); ?></span>
 			<span class="spacer comments"><?php comments_number( '0 '. __( 'Comments', 'mota' ) .'', '1 '. __( 'Comment', 'mota' ) .'', '%  '. __( 'Comments', 'mota' ) .'' ); ?></span>
-			<span class="spacer author">by Flo</span>
+			<span class="spacer author"><?php _e('by','mota'); ?> <?php echo esc_attr( get_the_author() ); ?></span>
 		</div>
 		
-		<div class="entry">
-			
+		<div class="<?php if( esc_attr( get_theme_mod( 'mota_two_column_content' ) ) == '') { ?><?php } else { ?>column-wrapper <?php } ?>entry">
+
 			<?php the_content(); ?>
 			
 		</div>

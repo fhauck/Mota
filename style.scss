@@ -2,9 +2,9 @@
 
 	Theme Name: Mota
     Text Domain: mota
-	Theme URI: http://www.flohauck.de/themes/mota/
-	Version: 1.01
-	Description: 
+	Theme URI: http://www.flohauck.de/wordpress-themes/mota/
+	Version: 1.0
+	Description: Mota is a minimalistic Theme that works perfectly as a Blog or Magazine-Layout. You can change some Colors, choose between three different Font-Combinations, upload your own Logo and a lot more.
 	Tags: blog, featured-images, sticky-post, theme-options, threaded-comments, translation-ready, custom-menu, right-sidebar, threaded-comments, one-column, two-columns
 	Author: Flo Hauck
 	Author URI: http://www.flohauck.de
@@ -112,7 +112,6 @@ body {
 	border: none;
 	color: #1f1f1f;
 	font-family: 'Merriweather Sans', sans-serif;
-	//font-family: 'Merriweather', serif;
 	font-size: 1rem;
 	line-height: 1.75;
 	background-color: #FFFFFF;
@@ -399,6 +398,10 @@ h3.headline-teaser {
 	a {
 		color: inherit;
 		text-decoration: none;
+		
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 	
 	@media (min-width: 1280px) {
@@ -449,6 +452,10 @@ h3.headline-teaser {
 	
 	@at-root body:not(.home) .article-meta {
 		color: $colorLightGrey;
+	}
+	
+	a {
+		color: inherit;
 	}
 
 }
@@ -546,6 +553,14 @@ h3.headline-teaser {
 		
 		.article-meta {
 			color: $colorLightGrey;
+			
+			a {
+				color: inherit;
+				
+				&:hover {
+					color: $colorBlue;
+				}
+			}
 		}
 	}
 	
