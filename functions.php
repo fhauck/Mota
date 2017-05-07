@@ -19,11 +19,7 @@ function mota_setup() {
 	
 	// Add nav menu
 	register_nav_menu( 'primary', __('Primary Menu','mota') );
-	
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus( array(
-		'menu-1' => esc_html__( 'Primary', 'mota' ),
-	) );
+	register_nav_menu( 'footer', __('Footer Menu','mota') );
 	
 	add_theme_support( 'post-thumbnails' );
 	
@@ -219,7 +215,7 @@ class mota_Customize {
 				'choices'  => array(
 					0  => __( 'latest/newest Post', 'mota' ),
 					1  => __( 'latest/newest Sticky Post', 'mota' ),
-					2  => __( 'Invisible', 'mota' )
+					2  => __( 'hidden', 'mota' )
 				)
 		    )
 		);  
@@ -321,11 +317,11 @@ class mota_Customize {
 	            <?php
 		            
 			       
-			       esc_html( self::mota_generate_css('body', 'font-family', 'mota_main_font') ); 
+			       esc_html( self::mota_generate_css('body,.entry h1,.entry h2,.entry h3,.entry h4,.entry h5,.entry h6', 'font-family', 'mota_main_font') ); 
 			       esc_html( self::mota_generate_css('.teaser-text, .entry', 'font-family', 'mota_second_font') ); 
 		            
 		           esc_html( self::mota_generate_css('#top-section::after,h1.headline-main::after,h3.headline-teaser::after', 'background-color', 'accent_color') ); 
-		           esc_html( self::mota_generate_css('h2.headline-sub,.article-list article .article-meta a:hover', 'color', 'accent_color') );
+		           esc_html( self::mota_generate_css('h2.headline-sub,.article-list article .article-meta a:hover,.footer .footer-navi ul li a:hover', 'color', 'accent_color') );
 		           
 		           esc_html( self::mota_generate_css('#top-section::after', 'background-color', 'overlay_color') ); 
 		        ?>
