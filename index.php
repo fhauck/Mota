@@ -90,29 +90,34 @@
 
 <section class="article-list">
 	<div class="innerwidth">
-	<div class="three-column">
+		<div class="three-column">
+			
+		<?php 
+		if(!empty($paged)) {
+		    $paged = $paged;
+		}elseif(get_query_var( 'paged')) {
+		    $paged = get_query_var('paged');
+		}elseif(get_query_var( 'page')) {
+		    $paged = get_query_var('page');
+		}else {
+		    $paged = 1;
+		}
+		$args = array(
+		    'ignore_sticky_posts' => 1,
+		    'paged' => $paged
+		);
+		$wp_query = new WP_Query( $args );
+		while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 		
-	<?php 
-	if(!empty($paged)) {
-	    $paged = $paged;
-	}elseif(get_query_var( 'paged')) {
-	    $paged = get_query_var('paged');
-	}elseif(get_query_var( 'page')) {
-	    $paged = get_query_var('page');
-	}else {
-	    $paged = 1;
-	}
-	$args = array(
-	    'ignore_sticky_posts' => 1,
-	    'paged' => $paged
-	);
-	$wp_query = new WP_Query( $args );
-	while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
+			<?php get_template_part( 'loop' ); ?>
+		
+		<?php endwhile; ?>
+		
+				
+		<?php wp_reset_query(); ?>
 	
-		<?php get_template_part( 'loop' ); ?>
-	
-	<?php endwhile; ?>
-	
+		</div>
+		
 		<?php
 			the_posts_pagination( array(
 				'prev_text'          => __( 'Previous page', 'mota' ),
@@ -120,10 +125,6 @@
 				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'mota' ) . ' </span>',
 			) );
 		?>
-			
-	<?php wp_reset_query(); ?>
-
-	</div>
 	</div>
 </section>
 

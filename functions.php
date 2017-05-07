@@ -321,7 +321,7 @@ class mota_Customize {
 			       esc_html( self::mota_generate_css('.teaser-text, .entry', 'font-family', 'mota_second_font') ); 
 		            
 		           esc_html( self::mota_generate_css('#top-section::after,h1.headline-main::after,h3.headline-teaser::after', 'background-color', 'accent_color') ); 
-		           esc_html( self::mota_generate_css('h2.headline-sub,.article-list article .article-meta a:hover,.footer .footer-navi ul li a:hover', 'color', 'accent_color') );
+		           esc_html( self::mota_generate_css('h2.headline-sub,.article-list article .article-meta a:hover,.footer .footer-navi ul li a:hover,.navigation.pagination .nav-links span.current, .navigation.pagination .nav-links span:hover, .navigation.pagination .nav-links a.current, .navigation.pagination .nav-links a:hover', 'color', 'accent_color') );
 		           
 		           esc_html( self::mota_generate_css('#top-section::after', 'background-color', 'overlay_color') ); 
 		        ?>

@@ -39,6 +39,11 @@ Merriweather Font license : Apache License, Version 2.0, http://www.apache.org/l
 Open Sans Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
 Roboto Font license : Apache License, Version 2.0, http://www.apache.org/licenses/LICENSE-2.0
 
+Icons: 
+Author Icon : Attribution-NoDerivs 3.0 Unported (CC BY-ND 3.0), https://creativecommons.org/licenses/by-nd/3.0/, https://www.iconfinder.com/icons/172626/male_user_icon
+Time Icon : Free for commercial use, https://www.iconfinder.com/icons/326483/access_clock_time_icon
+Comment Icon (with little changes) : Attribution 3.0 Unported (CC BY 3.0), https://creativecommons.org/licenses/by/3.0/, https://www.iconfinder.com/icons/510931/chat_comment_message_talk_icon
+
 Images used on Theme-Screenshot: 
 // Stacy Wyss (https://unsplash.com/@stacywyss?photo=-aDl1z8_nGY) : Creative Commons Zero, https://creativecommons.org/publicdomain/zero/1.0/
 // David Marcu (https://unsplash.com/@davidmarcu?photo=VfUN94cUy4o) : Creative Commons Zero, https://creativecommons.org/publicdomain/zero/1.0/
