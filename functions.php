@@ -197,6 +197,34 @@ class mota_Customize {
 		        'priority' => 75
 		    )
 		);
+		
+		
+		// Define Big Header Image on Home
+		
+		$wp_customize->add_setting(
+		    'mota_home_header',
+		    array(
+		        'default' => 0,
+		        'sanitize_callback' => 'mota_sanitize_int'
+		    )
+		);
+		
+		
+		$wp_customize->add_control(
+		    'mota_home_header',
+		    array(
+		        'label' => __( 'Big Header-Image on Front Page is ...', 'mota' ),
+		        'section' => 'mota_posts_pages',
+		        'type' => 'select',
+				'choices'  => array(
+					0  => __( 'latest/newest Post', 'mota' ),
+					1  => __( 'latest/newest Sticky Post', 'mota' ),
+					2  => __( 'Invisible', 'mota' )
+				)
+		    )
+		);  
+		
+		
 	
 		// Add Two Columns Checkbox
 		
@@ -211,7 +239,7 @@ class mota_Customize {
 		$wp_customize->add_control(
 		    'mota_two_column_content',
 		    array(
-		        'label' => __( 'Show Content in Two Columns', 'mota' ),
+		        'label' => __( 'Show Content on Single Post/Page in Two Columns', 'mota' ),
 		        'section' => 'mota_posts_pages',
 		        'type' => 'checkbox'
 		    )
@@ -276,7 +304,7 @@ class mota_Customize {
 		$wp_customize->add_control(
 		    'mota_show_header_singlepost',
 		    array(
-		        'label' => __( 'Show Featured Image on single post template', 'mota' ),
+		        'label' => __( 'Show Featured Image on Single Post template', 'mota' ),
 		        'section' => 'mota_posts_pages',
 		        'type' => 'checkbox',
 		    )

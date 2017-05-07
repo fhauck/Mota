@@ -9,7 +9,7 @@ Tags: blog, featured-images, sticky-post, theme-options, translation-ready, cust
 
 == Description ==
 
-Mota is a minimalistic Theme that works perfectly as a Blog or Magazine-Layout. You can change some Colors, choose between three different Font-Combinations, upload your own Logo and a lot more.
+Mota is a minimalistic Theme that works perfectly as a Blog or Magazine-Layout. You can change some Colors, choose between different Font-Combinations, upload your own Logo and a lot more.
 
 == Installation ==
 
