@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-<!---
 <?php if(is_front_page()){
 	
 	if ( !is_paged() ) {
@@ -66,10 +65,18 @@
 			} ?>
 			
 			<?php
-			$args = array(
-			    'ignore_sticky_posts' => 1,
-			    'paged' => $paged
-			);
+			if( esc_attr( get_theme_mod( 'mota_home_header' ) == 0 ) ) {
+				$args = array(
+				    'ignore_sticky_posts' => 1,
+				    'paged' => $paged,
+				    'offset' => 1
+				);
+			} else {
+				$args = array(
+				    'ignore_sticky_posts' => 1,
+				    'paged' => $paged
+				);				
+			}
 			$wp_query = new WP_Query( $args );
 			while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 			
@@ -93,6 +100,6 @@
 		?>
 	</div>
 </section>
--->
+
         
 <?php get_footer(); ?>
