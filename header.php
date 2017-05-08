@@ -12,11 +12,14 @@
 	
 <header>
 	<div class="innerwidth">
+		
+		<div class="header-wrapper">
+		
 		<div id="logo">
 			<a href="<?php echo home_url( '/' ); ?>"><?php bloginfo( 'name' ); ?></a>
 		</div>
 
-		<nav>
+		<nav class="header-navigation">
 			
 			<a href="javascript:;" class="burger-menu">
 			  <?php _e('Navigation','branches'); ?>
@@ -30,7 +33,9 @@
 					'items_wrap' => '%3$s',
 					'theme_location' => 'primary'
 												
-				) ); } else {
+				) ); 
+				
+				} else {
 			
 				wp_list_pages( array(
 				
@@ -42,7 +47,10 @@
 			} ?>
 			</ul>
 		</nav>
-
+		
+		<div class="clear"></div>
+		
+		</div>
 	</div>
 </header>
 
