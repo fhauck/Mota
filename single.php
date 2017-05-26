@@ -14,12 +14,18 @@
 		<?php } ?>
 		
 		<div class="article-meta">
-			<span class="spacer date"><?php echo get_the_date(); ?></span>
-			<span class="spacer comments"><?php comments_number( '0 '. __( 'Comments', 'mota' ) .'', '1 '. __( 'Comment', 'mota' ) .'', '%  '. __( 'Comments', 'mota' ) .'' ); ?></span>
-			<span class="spacer author"><?php _e('by','mota'); ?> <?php echo esc_attr( get_the_author() ); ?></span>
+			<?php if( esc_attr( get_theme_mod( 'mota_hide_date' ) ) == '') { ?>
+				<span class="spacer date"><?php echo esc_attr( get_the_date() ); ?></span>
+			<?php } ?>
+			<?php if( esc_attr( get_theme_mod( 'mota_hide_comments' ) ) == '') { ?>
+				<span class="spacer comments"><a href="<?php the_permalink(); ?>#comments"><?php comments_number( '0 '. __( 'Comments', 'mota' ) .'', '1 '. __( 'Comment', 'mota' ) .'', '%  '. __( 'Comments', 'mota' ) .'' ); ?></a></span>
+			<?php } ?>
+			<?php if( esc_attr( get_theme_mod( 'mota_hide_author' ) ) == '') { ?>
+				<span class="spacer author"><?php _e('by','mota'); ?> <?php the_author_posts_link(); ?></span>
+			<?php } ?>
 		</div>
 		
-		<?php if( esc_attr( get_theme_mod( 'mota_show_header_singlepost' ) ) == '') { } else { ?>
+		<?php if( esc_attr( get_theme_mod( 'mota_show_header_singlepost' ) ) !== '') { ?>
 		<div class="article-image">
 			
 		<?php
@@ -41,7 +47,7 @@
 		</div>
 		<?php } ?>
 		
-		<div class="<?php if( esc_attr( get_theme_mod( 'mota_two_column_content' ) ) == '') { ?><?php } else { ?>column-wrapper <?php } ?>entry">
+		<div class="<?php if( esc_attr( get_theme_mod( 'mota_two_column_content' ) ) !== '') { ?>column-wrapper <?php } ?>entry">
 
 			<?php the_content(); ?>
 			
@@ -60,7 +66,7 @@
 		?>
 		
 		<?php comments_template( '', true ); ?>
-	
+
 	</div>
 	
 </article>

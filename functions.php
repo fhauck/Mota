@@ -241,6 +241,8 @@ class mota_Customize {
 		    )
 		);  
 		
+		
+		
 		// Add Font Switcher
 		
 		$wp_customize->add_setting(
@@ -305,6 +307,40 @@ class mota_Customize {
 		        'type' => 'checkbox',
 		    )
 		);  
+		
+
+		// Add Hide Date Checkbox
+		$wp_customize->add_setting('mota_hide_date',array('default' => false,'sanitize_callback' => 'mota_sanitize_int'));
+		$wp_customize->add_control(
+		    'mota_hide_date',
+		    array(
+		        'label' => __( 'Hide Date in Teasers', 'mota' ),
+		        'section' => 'mota_posts_pages',
+		        'type' => 'checkbox'
+		    )
+		); 
+		
+		// Add Hide Comments
+		$wp_customize->add_setting('mota_hide_comments',array('default' => false,'sanitize_callback' => 'mota_sanitize_int'));
+		$wp_customize->add_control(
+		    'mota_hide_comments',
+		    array(
+		        'label' => __( 'Hide Comments in Teasers', 'mota' ),
+		        'section' => 'mota_posts_pages',
+		        'type' => 'checkbox'
+		    )
+		); 
+		
+		// Add Hide Author
+		$wp_customize->add_setting('mota_hide_author',array('default' => false,'sanitize_callback' => 'mota_sanitize_int'));
+		$wp_customize->add_control(
+		    'mota_hide_author',
+		    array(
+		        'label' => __( 'Hide Author in Teasers', 'mota' ),
+		        'section' => 'mota_posts_pages',
+		        'type' => 'checkbox'
+		    )
+		); 
 	
 	}
 
@@ -321,7 +357,7 @@ class mota_Customize {
 			       esc_html( self::mota_generate_css('.teaser-text, .entry', 'font-family', 'mota_second_font') ); 
 		            
 		           esc_html( self::mota_generate_css('#top-section::after,h1.headline-main::after,h3.headline-teaser::after', 'background-color', 'accent_color') ); 
-		           esc_html( self::mota_generate_css('h2.headline-sub,.article-list article .article-meta a:hover,.footer .footer-navi ul li a:hover,.navigation.pagination .nav-links span.current, .navigation.pagination .nav-links span:hover, .navigation.pagination .nav-links a.current, .navigation.pagination .nav-links a:hover', 'color', 'accent_color') );
+		           esc_html( self::mota_generate_css('h2.headline-sub,.article-list article .article-meta a:hover,.footer .footer-navi ul li a:hover,.navigation.pagination .nav-links span.current, .navigation.pagination .nav-links span:hover, .navigation.pagination .nav-links a.current, .navigation.pagination .nav-links a:hover, .header-navigation ul li a:hover, .header-navigation ul li:hover', 'color', 'accent_color') );
 		           
 		           esc_html( self::mota_generate_css('#top-section::after', 'background-color', 'overlay_color') ); 
 		        ?>

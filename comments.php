@@ -11,7 +11,7 @@
 			<div class="comments-title-container">
 			
 				<h2 class="comments-title">
-					<?php comments_number( '0 '. __( 'Comments', 'branches' ) .'', '1 '. __( 'Comment', 'branches' ) .'', '%  '. __( 'Comments', 'branches' ) .'' ); ?>
+					<?php comments_number( '0 '. __( 'Comments', 'mota' ) .'', '1 '. __( 'Comment', 'mota' ) .'', '%  '. __( 'Comments', 'mota' ) .'' ); ?>
 				</h2>
 				
 				<div class="clear"></div>
@@ -21,27 +21,8 @@
 			<div class="comments">
 		
 				<ol class="commentlist">
-				    <?php wp_list_comments( array( 'type' => 'comment', 'callback' => 'branches_comment' ) ); ?>
+				    <?php wp_list_comments( array( 'type' => 'comment', 'avatar_size' => 60) ); ?>
 				</ol>
-				
-				<?php if (!empty($comments_by_type['pings'])) : ?>
-				
-					<div class="pingbacks">
-										
-						<h3 class="pingbacks-title">
-						
-							<?php echo count($wp_query->comments_by_type[pings]) . ' ';
-							echo _n( 'Pingback', 'Pingbacks', count($wp_query->comments_by_type[pings]), 'branches' ); ?>
-						
-						</h3>
-					
-						<ol class="pingbacklist">
-						    <?php wp_list_comments( array( 'type' => 'pings', 'callback' => 'branches_comment' ) ); ?>
-						</ol>
-							
-					</div> <!-- /pingbacks -->
-				
-				<?php endif; ?>
 						
 				<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 					
@@ -49,13 +30,13 @@
 					
 						<div class="fleft">
 											
-							<?php previous_comments_link( '&larr; ' . __( 'Previous', 'branches' ) ); ?>
+							<?php previous_comments_link( '&larr; ' . __( 'Previous', 'mota' ) ); ?>
 						
 						</div>
 						
 						<div class="fright">
 						
-							<?php next_comments_link( __( 'Next', 'branches' ) . ' &rarr;' ); ?>
+							<?php next_comments_link( __( 'Next', 'mota' ) . ' &rarr;' ); ?>
 						
 						</div>
 						
@@ -73,19 +54,6 @@
 	
 <?php endif; ?>
 
-<?php if ( ! comments_open() && ! is_page() ) : ?>
-
-	<div class="comments-container">
-	
-		<div class="comments-inner">
-
-			<p class="no-comments"><?php _e( 'Comments are closed.', 'branches' ); ?></p>
-		
-		</div>
-		
-	</div>
-	
-<?php endif; ?>
 
 <?php $comments_args = array(
 
@@ -97,7 +65,7 @@
 
 	'comment_field' => 
 		'<p class="comment-form-comment">
-			<label for="comment">' . __('Comment','branches') . ( $req ? '<span class="required">*</span>' : '' ) . '</label>
+			<label for="comment">' . __('Comment','mota') . ( $req ? '<span class="required">*</span>' : '' ) . '</label>
 			<textarea id="comment" name="comment" cols="45" rows="6" required></textarea>
 		</p>',
 	
@@ -105,19 +73,19 @@
 	
 		'author' =>
 			'<p class="comment-form-author">
-				<label for="author">' . __('Name','branches') . ( $req ? '<span class="required">*</span>' : '' ) . '</label> 
+				<label for="author">' . __('Name','mota') . ( $req ? '<span class="required">*</span>' : '' ) . '</label> 
 				<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" />
 			</p>',
 		
 		'email' =>
 			'<p class="comment-form-email">
-				<label for="email">' . __('Email','branches') . ( $req ? '<span class="required">*</span>' : '' ) . '</label> 
+				<label for="email">' . __('Email','mota') . ( $req ? '<span class="required">*</span>' : '' ) . '</label> 
 				<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" />
 			</p>',
 		
 		'url' =>
 			'<p class="comment-form-url">
-				<label for="url">' . __('Website','branches') . '</label>
+				<label for="url">' . __('Website','mota') . '</label>
 				<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" />
 			</p>')
 	),
